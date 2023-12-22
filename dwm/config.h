@@ -61,9 +61,10 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 //static const char *screenshot[] = { "maim", "-s", "|", "tee", "/home/ilovecactus/shots/$(date +%s).png", "|", "xclip", "-selection", "clipboard", "-t", "image/png", NULL };
-static const char *upvol[] = { "amixer", "set", "Master", "3%+", NULL };
-static const char *downvol[] = { "amixer", "set", "Master", "3%-", NULL };
+static const char *upvol[] = { "amixer", "set", "Master", "2%+", NULL };
+static const char *downvol[] = { "amixer", "set", "Master", "2%-", NULL };
 static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
+static const char *micmute[] = { "amixer", "set", "Capture", "toggle", NULL };
 
 
 static const Key keys[] = {
@@ -79,9 +80,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_F3,     spawn,	   {.v = upvol} },
-	{ MODKEY,                       XK_F2,     spawn,	   {.v = downvol} },
-	{ MODKEY,                       XK_F1,     spawn,          {.v = mutevol} },
+	{ NULL,                         XF86XK_AudioRaiseVolume,   spawn,	   {.v = upvol} },
+	{ NULL,                         XF86XK_AudioLowerVolume,   spawn,	   {.v = downvol} },
+	{ NULL,                         XF86XK_AudioMute,          spawn,    {.v = mutevol} },
+	{ NULL,                         XF86XK_AudioMicMute,       spawn,    {.v = micmute} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },

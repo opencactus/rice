@@ -67,9 +67,10 @@ static const struct arg args[] = {
 	/* function format          argument */
 	//{ datetime, "%s",           "%F %T" },
 	//{ wifi_perc, "W: (%3s%% on ", "wlp8s0" },
-    { netspeed_rx, " [NET  %sB/s]  ",      "enp5s0" },
-	{ run_command, "[VOL %4s]  ",   "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" },
-	{ cpu_perc, "[CPU  %s%%]  ", NULL	      },
-	{ ram_used, "[RAM 󰍛 %sB]  ", NULL	      },
-	{ datetime, "%s",             "%a %b %d %r " },
+  { netspeed_rx, " [NET %sB/s]  ", "wlan0" },
+	{ run_command, "[VOL %s]  ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" },
+	{ cpu_perc, "[CPU %s%]  ", NULL },
+	{ ram_used, "[RAM %sB]  ", NULL },
+  { battery_perc, "[BAT %s%]  ", "BAT0" },
+	{ datetime, "%s", "%a %b %d %r " }
 };
